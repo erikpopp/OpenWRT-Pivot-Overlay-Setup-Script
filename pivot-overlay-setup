@@ -1,0 +1,19 @@
+#!/bin/sh
+#pivot-overlay-setup
+#UI for pivot-overlay-cli
+
+usage="pivot-overlay-setup
+-h|--help   print this usage"
+
+echo "Pivot-Overlay Setup"
+
+for argument in "$@"
+do
+    case "$argument" in
+        -h|--help)  help
+                    ;;
+        *)          echo "Unknown Argument: \"$argument\""
+                    help
+                    ;;
+    esac
+done

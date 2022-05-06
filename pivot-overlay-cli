@@ -1,0 +1,34 @@
+#!/bin/sh
+#pivot-overlay-cli
+#cli for pivot-overlay-setup, designed to be used by scripts
+
+usage="pivot-overlay-cli
+-h|--help   print this usage"
+
+echo "Pivot-Overlay CLI"
+
+#initialize variables
+command_directory="./functions"
+
+echo "command_directory=\"$command_directory\""
+
+#load functions from command directory
+if test -d "$command_directory"
+then
+    for command in "$command_directory/*"
+    do
+        . "$command"
+    done
+fi
+
+
+for argument in "$@"
+do
+    case "$argument" in
+        -h|--help)              echo "$usage"
+                                ;;
+        *)                      echo "Unknown Argument: \"$argument\""
+                                echo "$usage"
+                                ;;
+    esac
+done
